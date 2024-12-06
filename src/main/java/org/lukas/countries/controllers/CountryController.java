@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class CountryController {
     @GetMapping("/")
     public String test() {
-        return "eloelo";
+        return "";
     }
 }
