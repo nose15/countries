@@ -2,7 +2,7 @@ package org.lukas.countries.controllers;
 
 import org.lukas.countries.dtos.CountryDTO;
 import org.lukas.countries.dtos.CountryListDTO;
-import org.lukas.countries.services.countryservice.CountryService;
+import org.lukas.countries.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
