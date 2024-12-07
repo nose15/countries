@@ -1,14 +1,17 @@
 package org.lukas.countries.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/countries")
 @RestController
 public class CountryController {
     @GetMapping("/")
-    public String test() {
+    public String getAll() {
         return "";
+    }
+
+    @GetMapping("/{code}")
+    public String getByCode(@PathVariable String code) {
+        return code;
     }
 }
