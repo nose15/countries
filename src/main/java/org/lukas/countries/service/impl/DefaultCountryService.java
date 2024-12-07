@@ -2,6 +2,7 @@ package org.lukas.countries.service.impl;
 
 import org.lukas.countries.dtos.CountryDTO;
 import org.lukas.countries.dtos.CountryListDTO;
+import org.lukas.countries.exceptions.ResourceNotFoundException;
 import org.lukas.countries.models.Country;
 import org.lukas.countries.repository.CountryRepository;
 import org.lukas.countries.service.CountryService;
@@ -20,7 +21,11 @@ public class DefaultCountryService implements CountryService {
     @Override
     public CountryDTO getByCode(String code) {
         Country country = countryRepository.findByCode(code);
-        System.out.println(country);
+
+        if (country == null) {
+            throw new ResourceNotFoundException("No country with code " + code);
+        }
+
         return new CountryDTO();
     }
 

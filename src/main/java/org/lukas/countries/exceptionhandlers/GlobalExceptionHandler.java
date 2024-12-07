@@ -1,6 +1,7 @@
 package org.lukas.countries.exceptionhandlers;
 
 import org.lukas.countries.exceptions.ResourceNotFoundException;
+import org.lukas.countries.models.ApiErrorMessage;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<Object> handleResourceNotFoundException(ResourceNotFoundException e, WebRequest request) {
-        return handleExceptionInternal(e, e.getMessage(), new HttpHeaders(), HttpStatus.NOT_FOUND, request);
+        ApiErrorMessage apiErrorMessage = new ApiErrorMessage(HttpStatus.NOT_FOUND.name(), e.getMessage());
+        return handleExceptionInternal(e, apiErrorMessage, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
     }
 }
