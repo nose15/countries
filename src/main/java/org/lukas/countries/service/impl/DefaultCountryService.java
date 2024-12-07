@@ -1,6 +1,5 @@
 package org.lukas.countries.service.impl;
 
-import org.lukas.countries.dtos.CountryDTO;
 import org.lukas.countries.exceptions.ResourceNotFoundException;
 import org.lukas.countries.models.Country;
 import org.lukas.countries.repository.CountryRepository;
@@ -8,7 +7,6 @@ import org.lukas.countries.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,23 +19,18 @@ public class DefaultCountryService implements CountryService {
     }
 
     @Override
-    public CountryDTO getByCode(String code) {
-        Country country = countryRepository.findByCode(code);
+    public Country getByCode(String code) {
+        Country country = countryRepository.findByCode(code.toUpperCase());
 
         if (country == null) {
             throw new ResourceNotFoundException("No country with code " + code);
         }
 
-        return new CountryDTO(country);
+        return country;
     }
 
     @Override
-    public List<CountryDTO> getAll() {
-        Iterable<Country> countryIterable = countryRepository.findAll();
-        List<CountryDTO> countries = new ArrayList<>();
-        for (Country country : countryIterable) {
-            countries.add(new CountryDTO(country));
-        }
-        return countries;
+    public List<Country> getAll() {
+        return countryRepository.findAll();
     }
 }

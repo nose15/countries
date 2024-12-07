@@ -1,10 +1,10 @@
 package org.lukas.countries.service;
 
-import org.lukas.countries.dtos.CountryDTO;
+import org.lukas.countries.models.Country;
 
 import java.util.List;
 
 public interface CountryService {
-    CountryDTO getByCode(String code);
-    List<CountryDTO> getAll();
+    Country getByCode(String code);
+    List<Country> getAll();
 }

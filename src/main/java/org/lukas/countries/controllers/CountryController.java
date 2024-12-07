@@ -1,6 +1,6 @@
 package org.lukas.countries.controllers;
 
-import org.lukas.countries.dtos.CountryDTO;
+import org.lukas.countries.models.Country;
 import org.lukas.countries.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,15 +19,15 @@ public class CountryController {
         this.countryService = countryService;
     }
 
-    @GetMapping("")
-    public ResponseEntity<List<CountryDTO>> getAll() {
-        List<CountryDTO> countries = countryService.getAll();
+    @GetMapping({"", "/"})
+    public ResponseEntity<List<Country>> getAll() {
+        List<Country> countries = countryService.getAll();
         return new ResponseEntity<>(countries, HttpStatus.OK);
     }
 
     @GetMapping("/{code}")
-    public ResponseEntity<CountryDTO> getByCode(@PathVariable String code) {
-        CountryDTO country = countryService.getByCode(code);
+    public ResponseEntity<Country> getByCode(@PathVariable String code) {
+        Country country = countryService.getByCode(code);
         return new ResponseEntity<>(country, HttpStatus.OK);
     }
 }

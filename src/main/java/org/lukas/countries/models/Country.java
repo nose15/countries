@@ -2,6 +2,8 @@ package org.lukas.countries.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "COUNTRIES")
 public class Country {
@@ -11,18 +13,26 @@ public class Country {
     private String code;
     private String name;
     private String officialName;
-    @Column(name = "currencies")
-    private String currenciesJson;
     private String capital;
     private String region;
     private String subRegion;
-    @Column(name = "languages")
-    private String languagesJson;
     private long population;
-    @Column(name = "borders")
-    private String bordersJson;
-    @Column(name = "timezones")
-    private String timezonesJson;
+
+    @Column(name = "currencies", columnDefinition = "TEXT")
+    @Convert(converter = JsonArrayConverter.class)
+    private List<String> currencies;
+
+    @Column(name = "languages", columnDefinition = "TEXT")
+    @Convert(converter = JsonArrayConverter.class)
+    private List<String> languages;
+
+    @Column(name = "borders", columnDefinition = "TEXT")
+    @Convert(converter = JsonArrayConverter.class)
+    private List<String> borders;
+
+    @Column(name = "timezones", columnDefinition = "TEXT")
+    @Convert(converter = JsonArrayConverter.class)
+    private List<String> timezones;
 
     public void setId(Long id) {
         this.id = id;
@@ -38,14 +48,6 @@ public class Country {
 
     public void setOfficialName(String officialName) {
         this.officialName = officialName;
-    }
-
-    public String getCurrenciesJson() {
-        return currenciesJson;
-    }
-
-    public void setCurrenciesJson(String currenciesJson) {
-        this.currenciesJson = currenciesJson;
     }
 
     public String getCapital() {
@@ -72,36 +74,12 @@ public class Country {
         this.subRegion = subRegion;
     }
 
-    public String getLanguagesJson() {
-        return languagesJson;
-    }
-
-    public void setLanguagesJson(String languagesJson) {
-        this.languagesJson = languagesJson;
-    }
-
     public long getPopulation() {
         return population;
     }
 
     public void setPopulation(int population) {
         this.population = population;
-    }
-
-    public String getBordersJson() {
-        return bordersJson;
-    }
-
-    public void setBordersJson(String bordersJson) {
-        this.bordersJson = bordersJson;
-    }
-
-    public String getTimezonesJson() {
-        return timezonesJson;
-    }
-
-    public void setTimezonesJson(String timezonesJson) {
-        this.timezonesJson = timezonesJson;
     }
 
     public String getName() {
@@ -118,5 +96,37 @@ public class Country {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public List<String> getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(List<String> languages) {
+        this.languages = languages;
+    }
+
+    public List<String> getBorders() {
+        return borders;
+    }
+
+    public void setBorders(List<String> borders) {
+        this.borders = borders;
+    }
+
+    public List<String> getTimezones() {
+        return timezones;
+    }
+
+    public void setTimezones(List<String> timezones) {
+        this.timezones = timezones;
+    }
+
+    public List<String> getCurrencies() {
+        return currencies;
+    }
+
+    public void setCurrencies(List<String> currencies) {
+        this.currencies = currencies;
     }
 }
