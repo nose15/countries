@@ -1,5 +1,9 @@
 package org.lukas.countries.services.countryservice;
 
-public interface CountryService {
+import org.lukas.countries.dtos.CountryDTO;
+import org.lukas.countries.dtos.CountryListDTO;
 
+public interface CountryService {
+    CountryDTO getByCode(String code);
+    CountryListDTO getAll();
 }

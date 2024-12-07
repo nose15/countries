@@ -7,11 +7,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class DefaultCountryService implements CountryService {
-    CountryDTO getByCode(String code) {
+
+    @Override
+    public CountryDTO getByCode(String code) {
         return new CountryDTO();
     }
 
-    CountryListDTO getAll() {
+    @Override
+    public CountryListDTO getAll() {
         return new CountryListDTO();
     }
 
