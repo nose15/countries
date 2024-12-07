@@ -1,4 +1,4 @@
-package org.lukas.countries.models;
+package org.lukas.countries.dtos;
 
 public class ApiErrorMessage {
     private String status;

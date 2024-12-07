@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "COUNTRIES")
 public class Country {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String code;
     private String name;
@@ -17,10 +18,10 @@ public class Country {
     private String subRegion;
     @Column(name = "languages")
     private String languagesJson;
-    private int population;
-    @Column(name = "bordersJson")
+    private long population;
+    @Column(name = "borders")
     private String bordersJson;
-    @Column(name = "timezonesJson")
+    @Column(name = "timezones")
     private String timezonesJson;
 
     public void setId(Long id) {
@@ -79,7 +80,7 @@ public class Country {
         this.languagesJson = languagesJson;
     }
 
-    public int getPopulation() {
+    public long getPopulation() {
         return population;
     }
 
