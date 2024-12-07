@@ -7,6 +7,7 @@ import jakarta.persistence.*;
 public class Country {
     @Id
     private Long id;
+    private String code;
     private String name;
     private String officialName;
     @Column(name = "currencies")
@@ -108,5 +109,13 @@ public class Country {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }
