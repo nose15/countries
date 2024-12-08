@@ -1,6 +1,7 @@
-package org.lukas.countries.models;
+package org.lukas.countries.model;
 
 import jakarta.persistence.*;
+import org.lukas.countries.converter.JsonArrayConverter;
 
 import java.util.List;
 

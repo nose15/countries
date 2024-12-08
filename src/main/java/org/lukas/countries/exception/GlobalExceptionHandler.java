@@ -1,7 +1,5 @@
-package org.lukas.countries.exceptionhandlers;
+package org.lukas.countries.exception;
 
-import org.lukas.countries.exceptions.ResourceNotFoundException;
-import org.lukas.countries.dtos.ApiErrorMessage;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

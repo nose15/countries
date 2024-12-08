@@ -1,4 +1,4 @@
-package org.lukas.countries.models;
+package org.lukas.countries.converter;
 
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;

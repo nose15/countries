@@ -1,7 +1,7 @@
 package org.lukas.countries.service.impl;
 
-import org.lukas.countries.exceptions.ResourceNotFoundException;
-import org.lukas.countries.models.Country;
+import org.lukas.countries.exception.ResourceNotFoundException;
+import org.lukas.countries.model.Country;
 import org.lukas.countries.repository.CountryRepository;
 import org.lukas.countries.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +20,8 @@ public class DefaultCountryService implements CountryService {
 
     @Override
     public Country getByCode(String code) {
-        Country country = countryRepository.findByCode(code.toUpperCase());
-
-        if (country == null) {
-            throw new ResourceNotFoundException("No country with code " + code);
-        }
-
-        return country;
+        return countryRepository.findByCode(code.toUpperCase())
+                .orElseThrow(() -> new ResourceNotFoundException("No country with code " + code));
     }
 
     @Override

@@ -1,6 +1,6 @@
 package org.lukas.countries.service;
 
-import org.lukas.countries.models.Country;
+import org.lukas.countries.model.Country;
 
 import java.util.List;
 
