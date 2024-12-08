@@ -1,7 +1,10 @@
 package org.lukas.countries.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 import org.lukas.countries.converter.JsonArrayConverter;
+import org.lukas.countries.utils.TimezoneJsonSerializer;
 
 import java.util.List;
 
@@ -9,28 +12,43 @@ import java.util.List;
 @Table(name = "COUNTRIES")
 public class Country {
     @Id
+    @JsonProperty("code")
     private String code;
+    @JsonProperty("name")
     private String name;
+    @JsonProperty("official_name")
     private String officialName;
-    private String capital;
+    @JsonProperty("region")
     private String region;
+    @JsonProperty("subregion")
     private String subRegion;
+    @JsonProperty("population")
     private long population;
 
     @Column(name = "currencies", columnDefinition = "TEXT")
     @ManyToMany
+    @JsonProperty("currencies")
     private List<Currency> currencies;
 
     @Column(name = "languages", columnDefinition = "TEXT")
     @ManyToMany
+    @JsonProperty("languages")
     private List<Language> languages;
 
     @Column(name = "timezones", columnDefinition = "TEXT")
     @ManyToMany
+    @JsonProperty("timezones")
+    @JsonSerialize(using = TimezoneJsonSerializer.class)
     private List<Timezone> timezones;
+
+    @JsonProperty("capital")
+    @Column(name = "capital", columnDefinition = "TEXT")
+    @Convert(converter = JsonArrayConverter.class)
+    private List<String> capital;
 
     @Column(name = "borders", columnDefinition = "TEXT")
     @Convert(converter = JsonArrayConverter.class)
+    @JsonProperty("borders")
     private List<String> borders;
 
     public String getOfficialName() {
@@ -41,11 +59,11 @@ public class Country {
         this.officialName = officialName;
     }
 
-    public String getCapital() {
+    public List<String> getCapital() {
         return capital;
     }
 
-    public void setCapital(String capital) {
+    public void setCapital(List<String> capital) {
         this.capital = capital;
     }
 
