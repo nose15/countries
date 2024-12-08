@@ -1,6 +1,5 @@
 package org.lukas.countries.controller;
 
-import org.lukas.countries.dto.CountryCreationDTO;
 import org.lukas.countries.model.Country;
 import org.lukas.countries.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +32,8 @@ public class CountryController {
     }
 
     @PostMapping({"", "/"})
-    public ResponseEntity<String> addCountry(@RequestBody CountryCreationDTO dto) {
-        countryService.create(dto);
+    public ResponseEntity<String> addCountry(@RequestBody Country country) {
+        countryService.create(country);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

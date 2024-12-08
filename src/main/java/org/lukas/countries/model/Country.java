@@ -9,8 +9,6 @@ import java.util.List;
 @Table(name = "COUNTRIES")
 public class Country {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     private String code;
     private String name;
     private String officialName;
@@ -34,14 +32,6 @@ public class Country {
     @Column(name = "borders", columnDefinition = "TEXT")
     @Convert(converter = JsonArrayConverter.class)
     private List<String> borders;
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
 
     public String getOfficialName() {
         return officialName;
