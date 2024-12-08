@@ -20,20 +20,20 @@ public class Country {
     private long population;
 
     @Column(name = "currencies", columnDefinition = "TEXT")
-    @Convert(converter = JsonArrayConverter.class)
-    private List<String> currencies;
+    @ManyToMany
+    private List<Currency> currencies;
 
     @Column(name = "languages", columnDefinition = "TEXT")
-    @Convert(converter = JsonArrayConverter.class)
-    private List<String> languages;
+    @ManyToMany
+    private List<Language> languages;
+
+    @Column(name = "timezones", columnDefinition = "TEXT")
+    @ManyToMany
+    private List<Timezone> timezones;
 
     @Column(name = "borders", columnDefinition = "TEXT")
     @Convert(converter = JsonArrayConverter.class)
     private List<String> borders;
-
-    @Column(name = "timezones", columnDefinition = "TEXT")
-    @Convert(converter = JsonArrayConverter.class)
-    private List<String> timezones;
 
     public void setId(Long id) {
         this.id = id;
@@ -99,14 +99,6 @@ public class Country {
         this.code = code;
     }
 
-    public List<String> getLanguages() {
-        return languages;
-    }
-
-    public void setLanguages(List<String> languages) {
-        this.languages = languages;
-    }
-
     public List<String> getBorders() {
         return borders;
     }
@@ -115,19 +107,27 @@ public class Country {
         this.borders = borders;
     }
 
-    public List<String> getTimezones() {
-        return timezones;
-    }
-
-    public void setTimezones(List<String> timezones) {
-        this.timezones = timezones;
-    }
-
-    public List<String> getCurrencies() {
+    public List<Currency> getCurrencies() {
         return currencies;
     }
 
-    public void setCurrencies(List<String> currencies) {
+    public void setCurrencies(List<Currency> currencies) {
         this.currencies = currencies;
+    }
+
+    public List<Language> getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(List<Language> languages) {
+        this.languages = languages;
+    }
+
+    public List<Timezone> getTimezones() {
+        return timezones;
+    }
+
+    public void setTimezones(List<Timezone> timezones) {
+        this.timezones = timezones;
     }
 }
