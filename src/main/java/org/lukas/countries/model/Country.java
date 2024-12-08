@@ -1,6 +1,7 @@
 package org.lukas.countries.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 import org.lukas.countries.converter.JsonArrayConverter;
@@ -38,7 +39,6 @@ public class Country {
     @Column(name = "timezones", columnDefinition = "TEXT")
     @ManyToMany
     @JsonProperty("timezones")
-    @JsonSerialize(using = TimezoneJsonSerializer.class)
     private List<Timezone> timezones;
 
     @JsonProperty("capital")

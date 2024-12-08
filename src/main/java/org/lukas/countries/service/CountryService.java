@@ -1,11 +1,7 @@
 package org.lukas.countries.service;
 
-import org.lukas.countries.dto.CountryCreationDTO;
 import org.lukas.countries.exception.ResourceNotFoundException;
 import org.lukas.countries.model.Country;
-import org.lukas.countries.model.Currency;
-import org.lukas.countries.model.Language;
-import org.lukas.countries.model.Timezone;
 import org.lukas.countries.repository.CountryRepository;
 import org.lukas.countries.repository.CurrencyRepository;
 import org.lukas.countries.repository.LanguageRepository;
@@ -37,10 +33,6 @@ public class CountryService {
 
     public List<Country> getAll() {
         return countryRepository.findAll();
-    }
-
-    public void createDirectly(Country country) {
-        countryRepository.save(country);
     }
 
     public void create(Country country) {

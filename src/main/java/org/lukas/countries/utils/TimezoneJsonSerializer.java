@@ -8,13 +8,9 @@ import org.lukas.countries.model.Timezone;
 import java.io.IOException;
 import java.util.List;
 
-public class TimezoneJsonSerializer extends JsonSerializer<List<Timezone>> {
+public class TimezoneJsonSerializer extends JsonSerializer<Timezone> {
     @Override
-    public void serialize(List<Timezone> timezones, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
-        jsonGenerator.writeStartArray();
-        for (Timezone timezone : timezones) {
-            jsonGenerator.writeString(timezone.getCode());
-        }
-        jsonGenerator.writeEndArray();
+    public void serialize(Timezone timezone, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
+        jsonGenerator.writeString(timezone.getCode());
     }
 }
