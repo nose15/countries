@@ -79,7 +79,7 @@ public class Country {
         return population;
     }
 
-    public void setPopulation(int population) {
+    public void setPopulation(long population) {
         this.population = population;
     }
 
